@@ -4,7 +4,38 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ 
+import Home from './home';
+import Service from './services'; 
+import About from './about';
+import Contact from './contact';
+import BMI from './bmi';
+import NutritionSearch from './nutritionSearch';
+import RecipeSearchApp from './RecipeSearchApp';
+import Footer from './footer';
+
+ 
+const appLink=(
+<div>
+<App />
+<Home />
+<About />
+<Service />
+<BMI />
+<NutritionSearch />
+<RecipeSearchApp />
+<Contact />
+<Footer />
+
+</div>
+
+)
+
+
+
+ // ReactDOM.render(routing, document.getElementById('root'))
+
+ReactDOM.render(appLink, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

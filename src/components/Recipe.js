@@ -3,31 +3,31 @@ import React, {Component} from 'react'
 export default class Recipe extends Component{
     render(){
         const{
+            label,
             image,
-            title,
-            readyInMinutes,
-            id
-        } = this.props.recipe;
+            url,
+            source
+        } = this.props.recipe.recipe;  
+        
+        const {handleDetails} = this.props
         return(
         <React.Fragment>
            <div className="col-10 mx-auto col-md-6 col-lg-4 my-3">
                 <div className = "card">
-                <img src= {`https://spoonacular.com/recipeImages/${id}-312x231.jpg`}
+                <img src= {image}             
                 className = "img-card-top"
                 style = {{height:"14rem"}}
                 alt = "recipe" />
             <div className = "card-body text-capitalize">
-            <h6>{title}</h6>
+            <h6>{label}</h6>
             <h6 className = "text-warning text-slanted">
-               Ready in minutes - {readyInMinutes} 
+               Published by - {source}
             </h6>
             </div>
             <div className  ="card-footer">
-                <button type = "button"
-                className = "btn btn-primary text-capitalize">
-                    details
-                </button>
-                <a href ={image} className = "btn btn-success mx-2 text-capitalize"
+            <button type='button' className='btn btn-primary text-capitalize' 
+                                onClick={() => handleDetails (0,label)}>Details</button>
+            <a href ={url} className = "btn btn-success mx-2 text-capitalize"
                  target = "_blank" rel="noopener noreferrer" >
                  recipe url 
                 </a>
