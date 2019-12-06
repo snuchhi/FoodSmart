@@ -12,6 +12,7 @@ function About() {
       Worried about the calorie intake, we can help with that too , look for the nutrition<br />
       values of for you ingredients. Atlast we need to stay healthy right ? Do check your BMI <br />
       to be on track.
+      
   </p>
 </header>
 </div>   

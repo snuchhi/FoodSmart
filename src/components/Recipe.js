@@ -8,9 +8,11 @@ export default class Recipe extends Component{
             url,
             source
         } = this.props.recipe.recipe;  
-        
+    
         const {handleDetails} = this.props
+
         return(
+            
         <React.Fragment>
            <div className="col-10 mx-auto col-md-6 col-lg-4 my-3">
                 <div className = "card">
