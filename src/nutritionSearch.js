@@ -1,7 +1,74 @@
 import React,{Component} from 'react';
 
 class NutritionSearch extends Component{
-       
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+          input: nutrition,        
+          calories: null,
+          dietLabels:null,
+          healthLabels: null,
+          totalDaily: null,
+          totalNutrients: null,
+          totalWeight: null,
+          uri: null,
+          yield: null,
+          ingredients:[]
+      
+        };
+        this.onTextChange = this.onTextChange.bind(this); 
+        this.onSearch=this.onSearch.bind(this);
+        this.onRest=this.onRest.bind(this);
+        this.baseState = this.state ;
+         
+      }
+  
+      onSearch = async(e) => {
+        const response = await fetch(url, {
+          method: 'post',
+          body: JSON.stringify({"ingr":this.state.input}),
+          headers: {
+              'Accept-Language': 'en-US,en;q=0.9',
+              'Content-Type': 'application/json', 
+          }
+      });
+  
+      const data = await response.json();
+      if (data.error) {
+        alert ('Please enter correct data');
+            this.setState({ output:   data.error}); 
+            this.setState({calories: 0});
+            this.setState({totalWeight: 0});
+            this.setState({uri: ''});
+            this.setState({yield: 0});
+        }
+        else{
+  
+      console.log(data);
+        this.setState({ output:   data.calories}); 
+        this.setState({calories: data.calories});
+        this.setState({dietLabels: data.dietLabels});
+        this.setState({healthLabels: data.healthLabels});
+        this.setState({totalDaily: Object.keys(data.totalDaily).map((key) => ({ key, value: data.totalDaily[key] }))});
+        this.setState({totalNutrients: Object.keys(data.totalNutrients).map((key) => ({ key, value: data.totalNutrients[key] }))});
+        this.setState({totalWeight: data.totalWeight});
+        this.setState({uri: data.uri});
+        this.setState({yield: data.yield});
+        this.setState({ingredients: data.ingredients});
+  
+         
+        } 
+      }
+      onTextChange = (e) => {
+        var array = e.target.value.split(',');
+  
+        this.setState({ input: array})
+      }
+  
+      onRest = (e) => { 
+        this.setState(this.baseState);
+      }    
 render(){
    
   return (
