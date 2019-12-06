@@ -1,30 +1,44 @@
 import React, {Component} from "react";
-import './App.css';
+ 
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 
 
 const recipes = []
-class App extends Component{
+const APP_ID = '47ec4575'
+const APP_KEY = 'df22d4a0fc945d65f7d3916746025134'
+
+class RecipeSearchApp extends Component{
   state = {
     recipes :  recipes,
-    url:"https://api.spoonacular.com/recipes/search?apiKey=9981b63541684d98bbacfc9610e901ab",
-    details_id : 592479,
-    pageIndex:1
+    url: `https://api.edamam.com/search?q=banana%20walnut&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=9`,
+    pageIndex:1,
+    label : '',
+    base_url: `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=9`,    
+    search: "",
+    error: ''
   };
-  async getRecipes(){
-    try{
-    const data = await fetch(this.state.url);
-    const jsonData = await data.json()
-    this.setState({
-     recipes:jsonData.results
-    });
-  }catch(error){
-    console.log(error);
+
+  async getRecipes() {
+    try {
+      const data = await fetch(this.state.url)
+      const jsonData = await data.json()
+      console.log(jsonData)
+      if (jsonData.hits.length === 0) {
+        this.setState(() => {
+          return { error: 'Sorry, but your search did not return any results' }
+        })
+      }
+      else {
+        this.setState(() => {
+          return {recipes: jsonData.hits}
+        })
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
-  }
-  
-  componentDidMount(){
+  componentDidMount() {
     this.getRecipes()
   }
 
@@ -44,25 +58,54 @@ class App extends Component{
       case 0:
         return (
           <RecipeDetails
-            id={this.state.details_id}
+            id={this.state.label.replace(/ /g, '%20')}
+            ingredients = {this.state.ingredientLines}
             handleIndex={this.handleIndex}
           />)
     }
   }
+
 
   handleIndex = (index) => {
     this.setState({
       pageIndex: index
     })
   }
-  render(){
-   // console.log(this.state.recipes);
+
+  handleDetails = (index, id) => {
+    this.setState({
+      pageIndex: index,
+      label: id
+    })
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      search: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const { search } = this.state
+    this.setState(() => {
+      return { url: `https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=9`, search: "" }
+    }, () => {
+      this.getRecipes()
+    })
+  }
+
+  render() {
+    console.log(this.state.label)
     return (
-       <React.Fragment>   
-      {this.displayPage(this.state.pageIndex)}
-    </React.Fragment>
-    );
+      <section id="recipeSearchApp">
+      <div className="container">
+      <React.Fragment>
+        {this.displayPage(this.state.pageIndex)}
+      </React.Fragment>
+      </div>
+      </section>
+    )
   }
 }
-
-export default App;
+export default RecipeSearchApp;
