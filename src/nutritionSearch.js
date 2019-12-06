@@ -1,5 +1,10 @@
 import React,{Component} from 'react';
 
+const appId = '47379841';
+const appKey = 'd28718060b8adfd39783ead254df7f92';
+const url = `https://api.edamam.com/api/nutrition-details?app_id=${appId}&app_key=${appKey}`;
+const nutrition = [];
+
 class NutritionSearch extends Component{
 
     constructor(props) {
