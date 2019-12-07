@@ -1,3 +1,5 @@
+//This componet gives fetch the data for each recipe
+//it didplays the recipe details in a seperate page
 import React, {Component} from 'react';
 
 const APP_ID = '47ec4575'

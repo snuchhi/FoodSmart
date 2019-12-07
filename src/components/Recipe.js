@@ -1,3 +1,5 @@
+//This component implements the code to get the recipe 
+//it fives the recepie list with url details and recipe details
 import React, {Component} from 'react'
 
 export default class Recipe extends Component{

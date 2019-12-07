@@ -1,3 +1,7 @@
+//This component contains the layout for the contact form
+//handles the event raised by the user using react handler
+//takes name, email and message and the creator is notified with an email
+//user third party mail server (smpt server as a host to connect to gmail)
 import React, {Component} from 'react';
 import axios from 'axios';
 

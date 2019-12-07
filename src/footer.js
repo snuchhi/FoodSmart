@@ -1,3 +1,4 @@
+//Footer section conatins the copy right content
 import React from 'react';
 function Footer() {
   return (

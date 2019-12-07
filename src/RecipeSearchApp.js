@@ -1,3 +1,5 @@
+//This component implements the code to get the recipes
+//It gives the list of the search recipe for a given ingredients
 import React, {Component} from "react";
  
 import RecipeList from './components/RecipeList';

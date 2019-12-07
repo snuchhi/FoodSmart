@@ -1,3 +1,4 @@
+//This component implements the code to display the recipe list ib one page
 import React, {Component} from "react";
 import Recipe from "./Recipe";
 import RecipeSearch from "./RecipeSearch";

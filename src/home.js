@@ -1,3 +1,6 @@
+//This componet represents the main page with different pictures swiping
+//used caraousel features to get the effect
+//have four items and our content written over it
 import React from 'react';
 function Home() {
   return (

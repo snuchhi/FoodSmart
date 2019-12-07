@@ -1,3 +1,6 @@
+//This component describe the layout of all the react component
+//it renders all the pages into the html file using id root
+//imports all the required components and tools
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
