@@ -1,3 +1,5 @@
+//Layout for the page that contains the three services
+//Recipe search, Nutrition finder and BMi camculation
 import React from 'react';
 function Service() {
   return (

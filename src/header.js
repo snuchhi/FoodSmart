@@ -1,3 +1,6 @@
+//Represents the menu bar and is the first part of the page
+//contains nav elemets
+//used built in libraries to get the effect of scrolling
 import React from 'react';
 function Header() {
   return (

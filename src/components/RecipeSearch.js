@@ -1,3 +1,4 @@
+//layout to search a recipe
 import React, { Component } from 'react'
 
 export default class RecipeSearch extends Component {
