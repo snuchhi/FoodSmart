@@ -1,8 +1,10 @@
+//Implemented the code to handle the routes when user use the contact form
+//uses express server to sends the data to gail using smpt server
 var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 const creds = require('../config/config');
-
+//host server to access the gmail
 var transport = {
   host: 'smtp.gmail.com',
   auth: {
@@ -21,6 +23,7 @@ transporter.verify((error, success) => {
   }
 });
 
+//route to post the rewuest
 router.post('/send', (req, res, next) => {
   var name = req.body.name
   var email = req.body.email
