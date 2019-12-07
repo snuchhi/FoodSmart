@@ -1,3 +1,4 @@
+//this is componenet describe about the web application
 import React from 'react';
 function About() {
   return (
