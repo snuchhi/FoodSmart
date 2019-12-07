@@ -1,3 +1,5 @@
+//Represents the linking of nav menu elements to 
+//it's specific page
 import React from 'react';
 
 function App() {

@@ -1,3 +1,7 @@
+//This component contains the code for calculating BMI given the input
+//by the user. It handles the request using the react handler
+//Takes weight in lbs and height in feet and inches
+//Results also include if the value is underweight, normal or over weight
 import React,{Component} from 'react';
 
 class BMI extends Component {
@@ -29,7 +33,6 @@ class BMI extends Component {
       actionInchInputChange = (e) => {
         this.setState({ inch: Number(e.target.value)})
       }
-    
       actionResult = (e) => {
 
         e.preventDefault();
